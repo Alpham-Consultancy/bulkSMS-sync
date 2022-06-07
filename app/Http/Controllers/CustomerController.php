@@ -42,11 +42,28 @@ class CustomerController extends Controller
     public function uploadCustomers(Request $request, $id)
     {
         //
-        $request->validate([
-              'file' => 'required|mimes:ods,xlx,csv|max:5048',
-        ]);
 
-        
+        // return ($request);
+
+        $upload = $request->toArray();
+
+        $upload = $upload[0];
+
+        foreach ($upload as $user) {
+
+                $customer = new User; 
+                $customer->name = $user['name'];
+                $customer->phone = $user['phone'];
+                $customer->user_id = $id;
+                $customer->save();
+        }
+
+        $response = [
+            'message' => 'Customer Saved Success',
+        ];
+
+        return response($response, 200);
+         
 
     }
     

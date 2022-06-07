@@ -19,13 +19,14 @@ use App\Http\Controllers\CustomerController;
 
 // Public Routes 
 
+Route::post('/upload/customers/{id}',[CustomerController::class, 'uploadCustomers']);
 
 // Protected Routes 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
     // CUstomer
-    Route::post('/upload/customers/{id}',[CustomerController::class, 'uploadCustomers']);
+    // Route::post('/upload/customers/{id}',[CustomerController::class, 'uploadCustomers']);
     Route::get('customers/{id}',[CustomerController::class, 'customers']);
     Route::post('sms/send/{id}',[CustomerController::class, 'sendSMS']);
   

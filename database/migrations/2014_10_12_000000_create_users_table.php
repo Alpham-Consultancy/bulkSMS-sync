@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('surname')->nullable();
-            $table->string('companyName')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('companyName')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('address')->nullable();
             $table->enum('role', ['admin' , 'customer'])->default('customer');
             $table->string('user_id')->nullable();
